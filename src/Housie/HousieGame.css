@@ -256,3 +256,9 @@
 .cancel-button:hover {
   background-color: #c53030;
 }
+
+.df {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
