@@ -178,6 +178,7 @@
   
   @media (max-width: 768px) {
     .absolute.bottom-4 {
+      bottom: -2rem;
       font-size: 1.5rem; /* Smaller font for mobile */
       margin-top: 1rem;
       padding: 0 1rem; /* Extra padding for narrower screens */

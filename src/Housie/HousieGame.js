@@ -3,6 +3,7 @@ import { FaRedoAlt, FaForward, FaSync, FaVolumeUp, FaVolumeMute } from 'react-ic
 import { h, o, u, i, s, e, signature } from '../Assests/images/imagePath';
 import './HousieGame.css';
 import { FaHeart } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 
 const HousieGame = () => {
   const [numbers, setNumbers] = useState(Array.from({ length: 90 }, (_, i) => i + 1));
@@ -107,90 +108,97 @@ const HousieGame = () => {
   };
 
   return (
-    <div className='housie-game-container flex flex-col items-center p-4 md:p-10 lg:p-20'>
-      <div className="flex items-center space-x-2 mb-8 justify-center w-2">
-        {[h, o, u, i, s, e].map((imgSrc, idx) => (
-          <img key={idx} src={imgSrc} alt={imgSrc} />
-        ))}
-      </div>
+    <div><Helmet>
+      <title>Housie Game | Play & Win!</title>
+      <meta name="description" content="Play the exciting game of Housie with family and friends. Fun, prizes, and unforgettable moments!" />
+      <meta name="keywords" content="Housie, bingo, family game, friends, fun" />
+    </Helmet>
 
-      <div className="content-container flex flex-col lg:flex-row items-center">
-
-        {isResetConfirmVisible && (
-          <div className="reset-confirm-modal">
-            <div className="modal-content animate-pop">
-              <p>Are you sure you want to reset the game?</p>
-              <div className="modal-buttons">
-                <button onClick={handleConfirmReset} className="confirm-button">Yes</button>
-                <button onClick={handleCancelReset} className="cancel-button">No</button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="number-chart grid grid-cols-10 gap-1 md:gap-2 mb-4 lg:mr-10">
-          {Array.from({ length: 90 }, (_, i) => i + 1).map(num => (
-            <div key={num} className={`number-box ${selectedNumbers.includes(num) ? 'selected' : ''}`}>
-              {num}
-            </div>
+      <div className='housie-game-container flex flex-col items-center p-4 md:p-10 lg:p-20'>
+        <div className="flex items-center space-x-2 mb-8 justify-center w-2">
+          {[h, o, u, i, s, e].map((imgSrc, idx) => (
+            <img key={idx} src={imgSrc} alt={imgSrc} />
           ))}
         </div>
 
-        <div className="right-section flex flex-col items-center lg:items-center">
-          <div className="circle-display mb-4 animate-pop">
-            <div className="circle-number">{lastThree[0] || '-'}</div>
-          </div>
-          <div className="flex space-x-4 mb-2">
-            <button onClick={handleResetConfirm} className="action-button bg-red-600 hover:bg-red-700">
-              <FaRedoAlt className="mr-2" /> Reset
-            </button>
-            <button onClick={handleNext} className="action-button bg-green-600 hover:bg-green-700" disabled={numbers.length === 0}>
-              <FaForward className="mr-2" /> Next
-            </button>
-          </div>
-          <div className="flex space-x-3 text-2xl mb-4">
-            {lastThree.slice(1).map((num, idx) => (
-              <div key={idx} className="recent-number animate-bounce">
+        <div className="content-container flex flex-col lg:flex-row items-center">
+
+          {isResetConfirmVisible && (
+            <div className="reset-confirm-modal">
+              <div className="modal-content animate-pop">
+                <p>Are you sure you want to reset the game?</p>
+                <div className="modal-buttons">
+                  <button onClick={handleConfirmReset} className="confirm-button">Yes</button>
+                  <button onClick={handleCancelReset} className="cancel-button">No</button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="number-chart grid grid-cols-10 gap-1 md:gap-2 mb-4 lg:mr-10">
+            {Array.from({ length: 90 }, (_, i) => i + 1).map(num => (
+              <div key={num} className={`number-box ${selectedNumbers.includes(num) ? 'selected' : ''}`}>
                 {num}
               </div>
             ))}
           </div>
-          <div className="total-collection-section mb-4 w-full items-center lg:items-center">
-            <label className="text-white font-semibold mb-2">Total Collection:</label>
-            <div className="flex items-center space-x-2">
-              <input type="number" value={totalCollection} onChange={handleTotalCollectionChange} placeholder="Enter amount" className="total-collection-input px-4 py-2 rounded-md w-full text-gray-800" />
-              <button onClick={handleRecalculate} className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600">
-                <FaSync />
+
+          <div className="right-section flex flex-col items-center lg:items-center">
+            <div className="circle-display mb-4 animate-pop">
+              <div className="circle-number">{lastThree[0] || '-'}</div>
+            </div>
+            <div className="flex space-x-4 mb-2">
+              <button onClick={handleResetConfirm} className="action-button bg-red-600 hover:bg-red-700">
+                <FaRedoAlt className="mr-2" /> Reset
+              </button>
+              <button onClick={handleNext} className="action-button bg-green-600 hover:bg-green-700" disabled={numbers.length === 0}>
+                <FaForward className="mr-2" /> Next
               </button>
             </div>
-            <div className="calculation-output font-semibold mt-4 text-white">
-              <p>Jaldi: {gladi}</p>
-              <p>Lines: {lines * 3} (each {lines})</p>
-              <p>Full: {full}</p>
+            <div className="flex space-x-3 text-2xl mb-4">
+              {lastThree.slice(1).map((num, idx) => (
+                <div key={idx} className="recent-number animate-bounce">
+                  {num}
+                </div>
+              ))}
             </div>
-          </div>
+            <div className="total-collection-section mb-4 w-full items-center lg:items-center">
+              <label className="text-white font-semibold mb-2">Total Collection:</label>
+              <div className="flex items-center space-x-2">
+                <input type="number" value={totalCollection} onChange={handleTotalCollectionChange} placeholder="Enter amount" className="total-collection-input px-4 py-2 rounded-md w-full text-gray-800" />
+                <button onClick={handleRecalculate} className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600">
+                  <FaSync />
+                </button>
+              </div>
+              <div className="calculation-output font-semibold mt-4 text-white">
+                <p>Jaldi: {gladi}</p>
+                <p>Lines: {lines * 3} (each {lines})</p>
+                <p>Full: {full}</p>
+              </div>
+            </div>
 
-          <div className='df'>
-            <div className="language-select">
-              <select value={language} onChange={handleLanguageChange} className="bg-gray-700 text-white p-2 rounded-md">
-                <option value="en">English</option>
-                {/* <option value="hi">Hindi</option>
+            <div className='df'>
+              <div className="language-select">
+                <select value={language} onChange={handleLanguageChange} className="bg-gray-700 text-white p-2 rounded-md">
+                  <option value="en">English</option>
+                  {/* <option value="hi">Hindi</option>
               <option value="te">Telugu</option> */}
-              </select>
-            </div>
+                </select>
+              </div>
 
-            <div className="mute-button p-2">
-              <button onClick={handleMuteToggle} className="bg-gray-500 text-white p-2 rounded-md">
-                {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-              </button>
+              <div className="mute-button p-2">
+                <button onClick={handleMuteToggle} className="bg-gray-500 text-white p-2 rounded-md">
+                  {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="absolute bottom-4 text-center w-full text-sm text-black opacity-70">
-        <FaHeart size={30} color="red" />
-        <img src={signature} alt="Signature" className="inline-block align-middle mx-2" />
+        <div className="absolute bottom-4 text-center w-full text-sm text-black opacity-70">
+          <FaHeart size={30} color="red" />
+          <img src={signature} alt="Signature" className="inline-block align-middle mx-2" />
 
+        </div>
       </div>
     </div>
   );
