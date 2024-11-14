@@ -84,7 +84,6 @@ const HousieGame = () => {
   };
 
   const handleConfirmReset = () => {
-    // Actual reset logic
     setNumbers(Array.from({ length: 90 }, (_, i) => i + 1));
     setSelectedNumbers([]);
     setLastThree([]);
@@ -116,7 +115,7 @@ const HousieGame = () => {
 
       <div className='housie-game-container flex flex-col items-center p-4 md:p-10 lg:p-20'>
         <div className="flex items-center space-x-2 mb-8 justify-center w-2">
-          {[h, o, u, i, s, e].map((imgSrc, idx) => (
+          {[h, o, u, i, s, e, e].map((imgSrc, idx) => (
             <img key={idx} src={imgSrc} alt={imgSrc} />
           ))}
         </div>
@@ -195,9 +194,10 @@ const HousieGame = () => {
           </div>
         </div>
         <div className="absolute bottom-4 text-center w-full text-sm text-black opacity-70">
-          <FaHeart size={30} color="red" />
-          <img src={signature} alt="Signature" className="inline-block align-middle mx-2" />
-
+          <a className="signature" target='_blank' href='https://prudhvi-kollana-portfolio.vercel.app/'>
+            <FaHeart size={30} color="red" />
+            <img src={signature} alt="Signature" className="inline-block align-middle mx-2" />
+          </a>
         </div>
       </div>
     </div>
