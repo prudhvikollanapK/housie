@@ -267,3 +267,7 @@
 .signature {
   display: flex;
 }
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
