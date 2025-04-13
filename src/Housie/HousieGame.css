@@ -90,7 +90,8 @@
     justify-content: center;
     width: 6rem;
     height: 6rem;
-    background: radial-gradient(circle, #fbbf24, #f59e0b);
+    border: #fff 1px solid;
+    background: radial-gradient(circle, #000, #3b82f6);
     border-radius: 50%;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
   }
@@ -126,6 +127,7 @@
     justify-content: center;
     background-color: #6366f1;
     color: #fff;
+    border: #fff 1px solid;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
