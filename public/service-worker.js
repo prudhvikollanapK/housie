@@ -4,24 +4,25 @@ const CACHE_NAME = 'react-app-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/static/js/bundle.js',       // Adjust paths as needed based on your build output
-  '/static/js/main.chunk.js',
-  '/static/js/0.chunk.js',
   '/logo192.png',
   '/manifest.json',
-  // Add other static assets or routes you want to cache
 ];
 
 // Install event - cache app shell
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
+    caches.open(CACHE_NAME).then(async cache => {
+      try {
+        await cache.addAll(urlsToCache);
+        console.log('All resources cached successfully');
+      } catch (error) {
+        console.error('Failed to cache:', error);
+      }
     })
   );
   self.skipWaiting();
 });
+
 
 // Activate event - clean up old caches if needed
 self.addEventListener('activate', event => {
