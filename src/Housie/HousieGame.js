@@ -163,7 +163,7 @@ const HousieGame = () => {
         />
       </Helmet>
 
-      <div className="housie-game-container flex flex-col items-center p-4 md:p-10 lg:p-20">
+      <div className="housie-game-container flex flex-col items-center p-4 md:p-10">
         <div className="flex items-center space-x-2 mb-8 justify-center w-2">
           {[h, o, u, i, s, e, e].map((imgSrc, idx) => (
             <img key={idx} src={imgSrc} alt={imgSrc} />
