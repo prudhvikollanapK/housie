@@ -273,3 +273,98 @@
 body::-webkit-scrollbar {
   width: 0px;
 }
+
+      /* signature / credit */
+      .pk-credit {
+        margin-top: 18px;
+        font-size: 14px;
+        color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .pk-credit a {
+        color: inherit;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .pk-credit a:hover {
+        text-decoration: underline;
+      }
+
+      /* heart button */
+      .pk-heart {
+        display: inline-grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        line-height: 0;
+        padding: 0;
+        border-radius: 8px;
+        border: 0;
+        background: linear-gradient(180deg, #fff0f0, #ffeaea);
+        color: #ff4b6e;
+        font-size: 14px;
+        cursor: pointer;
+        transform-origin: center;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        box-shadow: 0 6px 18px rgba(255, 75, 110, 0.12);
+      }
+
+      /* subtle hover & active */
+      .pk-heart:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 10px 28px rgba(255, 75, 110, 0.14);
+      }
+      .pk-heart:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      /* animated pulse for the heart (respects reduced-motion) */
+      @media (prefers-reduced-motion: no-preference) {
+        .pk-heart.pulse {
+          animation: pk-heart-pulse 1400ms infinite;
+        }
+        @keyframes pk-heart-pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.06);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+      }
+
+      /* small note style */
+      .pk-note {
+        color: #fff;
+        font-size: 13px;
+        margin-left: 4px;
+      }
+
+.pk-author {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.pk-author-img {
+  width: 140px;
+  /* height: 28px; */
+  object-fit: cover;
+  margin-left: 4px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.pk-author:hover .pk-author-img {
+  transform: scale(1.1);
+}

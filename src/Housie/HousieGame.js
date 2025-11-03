@@ -283,20 +283,33 @@ const HousieGame = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-4 text-center w-full text-sm text-black opacity-70">
-          <a
-            className="signature"
-            target="_blank"
-            href="https://prudhvi-kollana-portfolio.vercel.app/"
+        <p class="pk-credit">
+          Made with
+          <button
+            class="pk-heart"
+            aria-label="Love"
+            title="Made with love by Prudhvi Kollana"
           >
-            <FaHeart size={30} color="red" />
+            ❤
+          </button>
+          by
+          <a
+            href="https://prudhvi-kollana-portfolio.vercel.app/"
+            target="_blank"
+            rel="noopener"
+            class="pk-author"
+          >
             <img
               src={signature}
-              alt="Signature"
-              className="inline-block align-middle mx-2"
+              alt="Prudhvi Kollana"
+              class="pk-author-img"
             />
           </a>
-        </div>
+
+          <span class="pk-note"><strong>— Housiee</strong></span>
+        </p>
+
+
       </div>
     </div>
   );
